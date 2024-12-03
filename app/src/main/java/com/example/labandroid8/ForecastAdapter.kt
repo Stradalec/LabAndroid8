@@ -28,7 +28,6 @@ class ForecastAdapter(private val diffCallback: ForecastDiffCallback) :
             itemView.findViewById<TextView>(R.id.date).text = forecastItem.dt_txt
             itemView.findViewById<TextView>(R.id.temperature).text = forecastItem.main.temp.toString()
             val iconUrl = "https://openweathermap.org/img/wn/${forecastItem.weather[0].icon}@2x.png"
-            Log.d("Icon URL", iconUrl)
             Glide.with(itemView.context)
                 .load(iconUrl)
                 .into(itemView.findViewById(R.id.temperature_icon))

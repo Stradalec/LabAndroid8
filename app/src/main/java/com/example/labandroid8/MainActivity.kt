@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         val service = retrofit.create(OpenWeatherMapService::class.java)
 
-        val apiKey = "ab1700c1546c934f4cdc73aeab7eb4d3"
+        val apiKey = resources.getString(R.string.key)
         val city = "Шклов"
         val units = "metric"
 
@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Шклов"
 
 
         call.enqueue(object : Callback<Forecast> {
