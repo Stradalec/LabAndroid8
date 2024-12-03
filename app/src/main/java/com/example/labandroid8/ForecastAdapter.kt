@@ -1,5 +1,6 @@
 package com.example.labandroid8
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,8 @@ class ForecastAdapter(private val diffCallback: ForecastDiffCallback) :
         fun bind(forecastItem: ForecastItem) {
             itemView.findViewById<TextView>(R.id.date).text = forecastItem.dt_txt
             itemView.findViewById<TextView>(R.id.temperature).text = forecastItem.main.temp.toString()
-            val iconUrl = "http://openweathermap.org/img/wn/${forecastItem.weather[0].icon}@2x.png"
+            val iconUrl = "https://openweathermap.org/img/wn/${forecastItem.weather[0].icon}@2x.png"
+            Log.d("Icon URL", iconUrl)
             Glide.with(itemView.context)
                 .load(iconUrl)
                 .into(itemView.findViewById(R.id.temperature_icon))
