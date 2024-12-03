@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class ForecastAdapter(private val diffCallback: ForecastDiffCallback) :
     ListAdapter<ForecastItem, ForecastAdapter.ViewHolder>(diffCallback) {
@@ -25,7 +26,10 @@ class ForecastAdapter(private val diffCallback: ForecastDiffCallback) :
         fun bind(forecastItem: ForecastItem) {
             itemView.findViewById<TextView>(R.id.date).text = forecastItem.dt_txt
             itemView.findViewById<TextView>(R.id.temperature).text = forecastItem.main.temp.toString()
-            itemView.findViewById<TextView>(R.id.description).text = forecastItem.weather[0].description
+            val iconUrl = "http://openweathermap.org/img/wn/${forecastItem.weather[0].icon}@2x.png"
+            Glide.with(itemView.context)
+                .load(iconUrl)
+                .into(itemView.findViewById(R.id.temperature_icon))
         }
     }
 }
