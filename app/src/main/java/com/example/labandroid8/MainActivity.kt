@@ -50,11 +50,9 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Forecast>, response: Response<Forecast>) {
                 if (response.isSuccessful) {
                     val forecast = response.body()
-                    adapter.submitList(forecast!!.list)
-                }
-                else
-                {
-
+                    forecast?.apply {
+                        adapter.submitList(list)
+                    }
                 }
             }
 
